@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescription Audit Tool</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://unpkg.com/tesseract.js@v2.1.0/dist/tesseract.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Prescription Audit Tool</h1>
+            <p class="subtitle">Upload or enter prescription details for analysis</p>
+        </header>
+
+        <main>
+            <div class="input-section">
+                <div class="upload-container">
+                    <label for="prescription-image" class="file-input-label">
+                        <span class="upload-icon">📄</span>
+                        <span>Upload Prescription Image</span>
+                        <input type="file" id="prescription-image" accept=".jpg,.jpeg,.png,.pdf" hidden>
+                    </label>
+                    <p class="file-info">Accepted formats: JPG, PNG, PDF</p>
+                </div>
+
+                <div class="text-input-container">
+                    <textarea id="prescription-text" placeholder="Or paste prescription text here..."></textarea>
+                </div>
+
+                <button id="analyze-btn" class="primary-btn">Analyze Prescription</button>
+            </div>
+
+            <div id="loading" class="loading-container hidden">
+                <div class="spinner"></div>
+                <p>Analyzing prescription...</p>
+            </div>
+
+            <div id="results" class="results-container hidden">
+                <h2>Analysis Results</h2>
+                
+                <div class="results-grid">
+                    <div class="result-card" id="drugs-found">
+                        <h3>Medications Found</h3>
+                        <div class="content"></div>
+                    </div>
+
+                    <div class="result-card" id="flagged-drugs">
+                        <h3>Flagged Medications</h3>
+                        <div class="content"></div>
+                    </div>
+
+                    <div class="result-card" id="alerts">
+                        <h3>Alerts</h3>
+                        <div class="content"></div>
+                    </div>
+
+                    <div class="result-card" id="alternatives">
+                        <h3>Suggested Alternatives</h3>
+                        <div class="content"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="sample-prescription">
+            <button id="show-sample" class="secondary-btn">Show Sample Prescription</button>
+            <div id="sample-text" class="hidden">
+                <h3>Sample Prescription:</h3>
+                <p>Patient: John Doe<br>
+                Date: 2024-03-20<br>
+                Prescription:<br>
+                - Paracetamol 500mg, 2 tablets every 6 hours (max 8 tablets per day)<br>
+                - Ibuprofen 400mg, 1 tablet every 8 hours<br>
+                - Amoxicillin 500mg, 1 capsule three times daily</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html> 
