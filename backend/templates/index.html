@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RxGuardian - AI Prescription Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation"></div>
+    
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>RxGuardian</h1>
+            <p>Your AI-Powered Prescription Companion</p>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Input Card -->
+            <div class="card">
+                <div class="form-group">
+                    <label for="prescription">
+                        <i class="fas fa-prescription"></i> Enter Prescription
+                    </label>
+                    <textarea 
+                        id="prescription" 
+                        placeholder="Paste or type your prescription here..." 
+                        rows="6"
+                        spellcheck="false"
+                        autofocus
+                    ></textarea>
+                </div>
+                <div class="button-group">
+                    <button id="analyze-btn" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Analyze Prescription
+                    </button>
+                    <button id="sample-btn" class="btn btn-secondary">
+                        <i class="fas fa-vial"></i> Try Sample
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading Overlay -->
+            <div id="loading">
+                <div class="spinner"></div>
+                <div class="loading-text">Analyzing your prescription...</div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="hidden"></div>
+
+
+            <!-- Results Section -->
+            <section id="results" class="hidden">
+                <div class="card">
+                    <h2><i class="fas fa-chart-line"></i> Analysis Results</h2>
+                    <div class="results-content">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Medication</th>
+                                    <th>Details</th>
+                                    <th>Recommendations</th>
+                                </tr>
+                            </thead>
+                            <tbody id="analysis-content"></tbody>
+                        </table>
+                        <div class="button-group" style="margin-top: 2rem; justify-content: center;">
+                            <button id="download-btn" class="btn btn-primary">
+                                <i class="fas fa-file-pdf"></i> Download Report
+                            </button>
+                            <button id="new-analysis-btn" class="btn btn-secondary">
+                                <i class="fas fa-redo"></i> New Analysis
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 RxGuardian. AI-powered prescription analysis.</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    
+    <!-- Particle Animation -->
+    <script>
+        // Particle animation is handled in script.js
+    </script>
+</body>
+</html>
